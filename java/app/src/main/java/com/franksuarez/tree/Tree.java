@@ -10,6 +10,7 @@ import java.util.Map;
 /**
  *
  * @author franksuarez
+ * @param <T>
  */
 public class Tree<T> {
 
