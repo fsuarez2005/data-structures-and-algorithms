@@ -2,15 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.franksuarez.MultiDimensional;
+package com.franksuarez.tree;
 
-import com.google.common.collect.TreeBasedTable;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  *
@@ -35,7 +30,6 @@ public class Tree<T> {
 
         public Node() {
             this.nodes = new HashMap<>();
-
         }
 
         public Node(T value) {
