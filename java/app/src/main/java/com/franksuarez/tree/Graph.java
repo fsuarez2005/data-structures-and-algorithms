@@ -20,6 +20,7 @@ public class Graph {
     
     class VertexPair {
         
+        
     }
     
     class Edge {
