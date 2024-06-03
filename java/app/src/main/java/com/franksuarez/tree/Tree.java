@@ -7,6 +7,8 @@ package com.franksuarez.tree;
 import java.util.HashMap;
 import java.util.Map;
 
+
+
 /**
  *
  * @author franksuarez
@@ -168,5 +170,14 @@ public class Tree<T> {
     public String toString() {
         return this.rootNode.toString();
     }
+    
+    
+    public void testRef() {
+        Integer a = 1;
+        
+        
+        
+    }
+    
 
 }
