@@ -1,4 +1,4 @@
-package com.franksuarez.tree;
+package com.franksuarez.dsa;
 
 import java.util.List;
 
