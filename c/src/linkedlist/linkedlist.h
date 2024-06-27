@@ -7,45 +7,44 @@
 #include <stdbool.h>
 
 
-struct _Node {
+typedef struct _node {
     char * value;
 
     // true if value needs to be freed
     bool allocated; 
+    
+    struct _node * next;
+} node;
 
 
-    struct _Node * next;
-};
-
-typedef struct _Node Node;
-
-struct _LinkedList {
-    Node * root;
-    Node * last;
+typedef struct _linkedlist {
+    node * root;
+    node * last;
     int length;
-};
-
-typedef struct _LinkedList LinkedList;
+} linkedlist;
 
 // ------------------------------------------------------------
 
-// allocates new linked list
-LinkedList * new_linkedlist();
-Node * new_node();
+// allocate new linked list
+linkedlist * new_linkedlist();
 
-void set_node_value(Node * n, char * value);
+// allocate new node
+node * new_node();
+
+// set node value
+void set_node_value(node * n, char * value);
 
 
+// free all nodes in linkedlist
+void free_linkedlist(node * list);
 
-void free_linkedlist(Node * list);
+int linkedlist_length(linkedlist * list);
 
-int linkedlist_length(LinkedList * list);
+void append_to_linked_list(linkedlist * list, char * value);
 
-void append_to_linked_list(LinkedList * list, char * value);
+node * get_last_node(linkedlist * list);
 
-Node * get_last_node(LinkedList * list);
-
-void print_linkedlist(LinkedList * list);
+void print_linkedlist(linkedlist * list);
 
 
 

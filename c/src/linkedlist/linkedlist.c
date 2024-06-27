@@ -6,21 +6,28 @@
 #include <string.h>
 #include <stdbool.h>
 
-LinkedList * new_linkedlist() {
+// returns NULL if cannot allocate
+linkedlist * new_linkedlist() {
     printf("ENTRY: new_linkedlist()\n");
-    LinkedList * output = (LinkedList *) malloc(sizeof(LinkedList));
+    linkedlist * output = malloc(sizeof(linkedlist));
+    if (output == NULL) {
+        fprintf(stderr,"ERROR: Cannot allocate.\n");
+    }
     return output;
 }
 
-Node * new_node() {
-    Node * output = (Node *) malloc(sizeof(Node));
+node * new_node() {
+    node * output = (node *) malloc(sizeof(node));
+    if (output == NULL) {
+        fprintf(stderr,"ERROR: Cannot allocate.\n");
+    }
     output->allocated = true;
     
     
     return output;
 }
 
-void set_node_value(Node * n, char * value) {
+void set_node_value(node * n, char * value) {
 
     // should pass len, but we will assume \0 term
     int value_len = strlen(value);
@@ -31,12 +38,12 @@ void set_node_value(Node * n, char * value) {
 }
 
 
-void append_to_linked_list(LinkedList * list, char * value) {
+void append_to_linked_list(linkedlist * list, char * value) {
     printf("ENTRY: append_to_linked_list()\n");
     // get last node
-    Node * last_node = get_last_node(list);
+    node * last_node = get_last_node(list);
     
-    Node * n = new_node();
+    node * n = new_node();
     
     set_node_value(n,value);
     
@@ -45,13 +52,13 @@ void append_to_linked_list(LinkedList * list, char * value) {
 
 
 // TODO: test
-Node * get_last_node(LinkedList * list) {
+node * get_last_node(linkedlist * list) {
     printf("ENTRY: get_last_node()\n");
     if (list == NULL || list->root == NULL) {
         return NULL;
     }
     
-    Node * current_node = list->root;
+    node * current_node = list->root;
     
     // if current_node->next == NULL, then current_node is last node
     // first node may be last node
@@ -66,7 +73,7 @@ Node * get_last_node(LinkedList * list) {
 }
 
 // TODO: test
-int linkedlist_length(LinkedList * list) {
+int linkedlist_length(linkedlist * list) {
     printf("ENTRY: linkedlist_length()\n");
     // NULL guard
     if (list == NULL) {
@@ -78,7 +85,7 @@ int linkedlist_length(LinkedList * list) {
     }
     
     
-    Node * current_node = list->root;
+    node * current_node = list->root;
     int count = 1;
     
     while (current_node->next != NULL) {
@@ -91,8 +98,8 @@ int linkedlist_length(LinkedList * list) {
 }
 
 
-// TODO: test
-void free_linkedlist(Node * list) {
+// TODO: convert to non-recursive
+void free_linkedlist(node * list) {
     if (list == NULL) {
         printf("list is null\n");
         // cannot free null
@@ -113,7 +120,6 @@ void free_linkedlist(Node * list) {
         // free next node
         free_linkedlist(list->next);
         
-        
         if (list->allocated) {
             free(list->value);
             
@@ -126,8 +132,8 @@ void free_linkedlist(Node * list) {
 }
 
 // TODO: test
-void print_linkedlist(LinkedList * list) {
-    Node * current_node = list->root;
+void print_linkedlist(linkedlist * list) {
+    node * current_node = list->root;
     
     int count = 0;
     
