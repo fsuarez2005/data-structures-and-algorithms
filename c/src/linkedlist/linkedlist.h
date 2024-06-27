@@ -32,23 +32,23 @@ linkedlist * new_linkedlist();
 node * new_node();
 
 // set node value
-void set_node_value(node * n, char * value);
+void setvalue_node(node * n, char * value);
 
+
+//void free_linkedlist(node * list);
 
 // free all nodes in linkedlist
-void free_linkedlist(node * list);
+void free_linkedlist(linkedlist * list);
 
-int linkedlist_length(linkedlist * list);
+// returns length of linkedlist
+int length_linkedlist(linkedlist * list);
 
-void append_to_linked_list(linkedlist * list, char * value);
+// appends value to end of linkedlist
+void append_linkedlist(linkedlist * list, char * value);
 
-node * get_last_node(linkedlist * list);
+// returns last node of linkedlist
+node * getlast_node(linkedlist * list);
 
 void print_linkedlist(linkedlist * list);
-
-
-
-
-
 
 #endif
