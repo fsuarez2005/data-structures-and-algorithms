@@ -4,6 +4,7 @@
  */
 package com.franksuarez.dsa;
 
+import java.util.Arrays;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -45,5 +46,24 @@ public class PermutationTest {
         String s = "ab";
         Permutation.permutation(s);
     }
+    
+    
+    @Test
+    public void testHeapAlgorithm() {
+        System.out.println("testHeapAlgorithm");
+        
+        Character[] nameArray = new Character[] {
+          'F','r','a','n','k'
+            
+        };
+        
+        
+        
+        Permutation.heapAlgorithm(nameArray.length, nameArray);
+        
+        
+        
+    }
+    
     
 }
